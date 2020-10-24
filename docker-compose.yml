@@ -16,3 +16,12 @@ services:
       - MONGO_URI=${MONGO_URI}
     ports:
       - ${PORT}:${PORT}
+
+  client:
+    build:
+      context: ./client
+      target: production
+      args:
+        - VUE_APP_API_URL=${VUE_APP_API_URL}
+    ports:
+      - '${CLIENTPORT}:80'

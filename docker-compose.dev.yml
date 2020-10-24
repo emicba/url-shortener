@@ -18,3 +18,17 @@ services:
       - MONGO_URI=${MONGO_URI}
     ports:
       - ${PORT}:${PORT}
+
+  client:
+    build:
+      context: ./client
+      target: development
+    volumes:
+      - ./client:/app
+    depends_on:
+      - server
+    environment:
+      - PORT=${CLIENTPORT}
+      - VUE_APP_API_URL=${VUE_APP_API_URL}
+    ports:
+      - '${CLIENTPORT}:${CLIENTPORT}'
