@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
   if (req.headers.accept === 'application/json') {
     res.json({ message: 'OK' });
   } else {
-    res.redirect('https://http.cat/200');
+    res.redirect(301, 'https://http.cat/200');
   }
 });
 
@@ -52,7 +52,7 @@ app.get('/:id', async (req, res, next) => {
   try {
     const url: Url | null = await urls.findOne({ slug });
     if (url) {
-      res.redirect(url.url);
+      res.redirect(301, url.url);
     } else {
       const error: Error = new Error(`${slug} not found`);
       error.status = 404;
