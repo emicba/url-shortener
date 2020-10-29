@@ -78,6 +78,7 @@ input,
 button {
   margin: 1rem;
   font-family: 'Trispace', sans-serif;
+  outline: none;
 }
 
 button {
